@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+// import { Auth0Provider } from "@auth0/auth0-react";
+
+// https://mockend.com/davidleiva/escollim-les-franqueses/post
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <Auth0Provider
+      domain="escollim.eu.auth0.com"
+      clientId="BPcLyIeVngxZx0LVRRuOD9NYABGNf24E"
+      redirectUri={window.location.origin}
+    > */}
+      <App />
+    {/* </Auth0Provider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
