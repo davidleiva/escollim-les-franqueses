@@ -62,7 +62,7 @@ const Login = () => {
     })
     api.post("/login", loginData)
         .then(res => {             
-            history.push("/dashboard/" + email);
+            history.push("/login/");
             // TODO: Login works
             debugger;
             console.log('okkk');

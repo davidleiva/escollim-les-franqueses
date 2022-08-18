@@ -1,10 +1,10 @@
-import { 
-  IonContent, 
-  IonHeader, 
-  IonPage, 
-  IonTitle, 
-  IonToolbar, 
-  IonCard, 
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCard,
   IonCardHeader,
   IonCardSubtitle,
   IonCardContent,
@@ -12,7 +12,8 @@ import {
   IonIcon,
   IonLabel,
   IonButton,
-  IonCardTitle } from '@ionic/react';
+  IonCardTitle
+} from '@ionic/react';
 import { useEffect, useState } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
@@ -49,41 +50,41 @@ const Tab1 = () => {
       } 
     }
   }
-  ` 
+  `
 
   // interface item {
   //   imagenPrincipal: string;
   // }
-  
-    const [items, setItems] = useState([]);
-  
-    useEffect(() => {
-      window
-        .fetch(`https://graphql.contentful.com/content/v1/spaces/aa781v1qfboj/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // Authenticate the request
-            Authorization: "Bearer RQAJmMzmfLt-gFXKxVQa025ALHeetH-S4ZyFfIg4JB4",
-          },
-          // send the GraphQL query
-          body: JSON.stringify({ query }),
-        })
-        .then((response) => response.json())
-        .then(({ data, errors }) => {
-          if (errors) {
-            console.error(errors);
-          }
-  
-          // rerender the entire component with new data
-          setItems(data.votacionCollection.items);
-          console.log(data.votacionCollection.items[0]);
-        });
-    }, []);
-  
-    // if (!page) {
-    //   return "Loading...";
-    // }
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    window
+      .fetch(`https://graphql.contentful.com/content/v1/spaces/aa781v1qfboj/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // Authenticate the request
+          Authorization: "Bearer RQAJmMzmfLt-gFXKxVQa025ALHeetH-S4ZyFfIg4JB4",
+        },
+        // send the GraphQL query
+        body: JSON.stringify({ query }),
+      })
+      .then((response) => response.json())
+      .then(({ data, errors }) => {
+        if (errors) {
+          console.error(errors);
+        }
+
+        // rerender the entire component with new data
+        setItems(data.votacionCollection.items);
+        console.log(data.votacionCollection.items[0]);
+      });
+  }, []);
+
+  // if (!page) {
+  //   return "Loading...";
+  // }
 
   return (
     <IonPage>
@@ -105,7 +106,7 @@ const Tab1 = () => {
       </IonContent> */}
       <IonContent fullscreen>
         {
-          items.map(item =>(
+          items.map(item => (
             <IonCard style={{
               maxWidth: '480px'
             }}>
@@ -115,9 +116,9 @@ const Tab1 = () => {
                 <IonCardTitle>{item.titulo}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <div style={{marginBottom: '20px'}}>{item.texto}</div>
+                <div style={{ marginBottom: '20px' }}>{item.texto}</div>
                 <div>
-                  <p>Votos: A favor: {item.votosAFavor} · En contra: {item.votosEnContra} · Abstenciones: {item.abstenciones}</p> 
+                  <p>Votos: A favor: {item.votosAFavor} · En contra: {item.votosEnContra} · Abstenciones: {item.abstenciones}</p>
                 </div>
                 <div
                   className="ion-justify-content-between"
@@ -126,9 +127,9 @@ const Tab1 = () => {
                     margin: '20px auto 8px'
                   }}
                 >
-                <IonButton color="success" style={{ width: '100%'}}>Sí</IonButton>
-                <IonButton color="medium" style={{ width: '100%'}}>Abstención</IonButton>
-                <IonButton color="danger" style={{ width: '100%'}}>No</IonButton>
+                  <IonButton color="success" style={{ width: '100%' }}>Sí</IonButton>
+                  <IonButton color="medium" style={{ width: '100%' }}>Abstención</IonButton>
+                  <IonButton color="danger" style={{ width: '100%' }}>No</IonButton>
                 </div>
               </IonCardContent>
             </IonCard>
